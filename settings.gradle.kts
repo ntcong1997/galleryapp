@@ -17,3 +17,4 @@ rootProject.name = "Gallery App"
 include(":app")
 include(":core:storage")
 include(":core:model")
+include(":core:common")
