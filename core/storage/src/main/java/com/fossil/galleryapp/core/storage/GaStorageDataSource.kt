@@ -20,7 +20,9 @@ class DefaultGaStorageDataSource @Inject constructor(
     private val gaStorage: GaStorage
 ) : GaStorageDataSource {
     override fun getPictures(): Flow<PagingData<Media>> {
-        val picturesPagingDataSource = PicturesPagingDataSource(gaStorage)
+        val picturesPagingDataSource = PicturesPagingDataSource { prevIndex, pageSize ->
+            gaStorage.getPictures(prevIndex, pageSize)
+        }
         return Pager(PagingConfig(pageSize = 20)) {
             picturesPagingDataSource
         }.flow
