@@ -18,6 +18,7 @@ dependencies {
 
     // Coil
     implementation(libs.io.coil.kt)
+    implementation(libs.io.coil.kt.video)
     implementation(libs.io.coil.kt.compose)
 
     // Paging

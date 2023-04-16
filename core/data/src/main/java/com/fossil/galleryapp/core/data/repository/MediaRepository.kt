@@ -10,4 +10,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface MediaRepository {
     fun getPictures(): Flow<PagingData<Media>>
+    fun getVideos(): Flow<PagingData<Media>>
 }

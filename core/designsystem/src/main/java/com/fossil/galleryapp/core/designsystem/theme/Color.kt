@@ -10,3 +10,5 @@ val Teal200 = Color(0xFF03DAC5)
 val BlueRibbon = Color(0xFF2754F8)
 
 val GraySilverChalice = Color(0xFF9E9E9E)
+
+val Transparent30 = Color(0x4D000000)

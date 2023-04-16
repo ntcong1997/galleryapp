@@ -14,17 +14,25 @@ import javax.inject.Inject
 
 interface GaStorageDataSource {
     fun getPictures(): Flow<PagingData<Media>>
+    fun getVideos(): Flow<PagingData<Media>>
 }
 
 class DefaultGaStorageDataSource @Inject constructor(
     private val gaStorage: GaStorage
 ) : GaStorageDataSource {
     override fun getPictures(): Flow<PagingData<Media>> {
-        val picturesPagingDataSource = PicturesPagingDataSource { prevIndex, pageSize ->
-            gaStorage.getPictures(prevIndex, pageSize)
-        }
         return Pager(PagingConfig(pageSize = 20)) {
-            picturesPagingDataSource
+            PicturesPagingDataSource { prevIndex, pageSize ->
+                gaStorage.getPictures(prevIndex, pageSize)
+            }
+        }.flow
+    }
+
+    override fun getVideos(): Flow<PagingData<Media>> {
+        return Pager(PagingConfig(pageSize = 20)) {
+            PicturesPagingDataSource { prevIndex, pageSize ->
+                gaStorage.getVideos(prevIndex, pageSize)
+            }
         }.flow
     }
 }

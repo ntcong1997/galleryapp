@@ -81,6 +81,7 @@ com-google-dagger-hilt-android-testing = { module = "com.google.dagger:hilt-andr
 com-google-gms-google-services = { module = "com.google.gms:google-services", version.ref = "com-google-gms-google-services" }
 io-coil-kt = { group = "io.coil-kt", name = "coil", version.ref = "io-coil" }
 io-coil-kt-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "io-coil" }
+io-coil-kt-video = { group = "io.coil-kt", name = "coil-video", version.ref = "io-coil" }
 junit = { module = "junit:junit", version.ref = "junit" }
 org-jetbrains-kotlin-kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "org-jetbrains-kotlin" }
 org-jetbrains-kotlin-kotlin-stdlib-jdk7 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk7", version.ref = "org-jetbrains-kotlin" }

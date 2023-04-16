@@ -9,6 +9,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import com.fossil.galleryapp.feature.pictures.navigation.navigateToPictures
+import com.fossil.galleryapp.feature.videos.navigation.navigateToVideos
 import com.fossil.galleryapp.navigation.TopLevelDestination
 
 /**
@@ -57,6 +58,7 @@ class GalleryAppState(
 
         when (topLevelDestination) {
             TopLevelDestination.PICTURES -> navController.navigateToPictures(topLevelNavOptions)
+            TopLevelDestination.VIDEOS -> navController.navigateToVideos(topLevelNavOptions)
         }
     }
 }

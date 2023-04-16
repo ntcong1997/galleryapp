@@ -16,4 +16,8 @@ class OfflineMediaRepository @Inject constructor(
     override fun getPictures(): Flow<PagingData<Media>> {
         return gaStorageDataSource.getPictures()
     }
+
+    override fun getVideos(): Flow<PagingData<Media>> {
+        return gaStorageDataSource.getVideos()
+    }
 }

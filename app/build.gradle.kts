@@ -27,6 +27,7 @@ android {
 
 dependencies {
     implementation(project(":feature:pictures"))
+    implementation(project(":feature:videos"))
 
     implementation(project(":core:common"))
     implementation(project(":core:designsystem"))

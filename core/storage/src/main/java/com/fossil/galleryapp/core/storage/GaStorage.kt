@@ -15,14 +15,26 @@ import javax.inject.Inject
 
 interface GaStorage {
     suspend fun getPictures(prevIndex: Int, pageSize: Int) : List<Media>
+    suspend fun getVideos(prevIndex: Int, pageSize: Int) : List<Media>
 }
 
 class DefaultGaStorage @Inject constructor(
     @ApplicationContext private val context: Context
 ) : GaStorage {
     override suspend fun getPictures(prevIndex: Int, pageSize: Int): List<Media> {
-        val pictures = ArrayList<Media>()
-        val uri: Uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+        return getMedia(prevIndex, pageSize, MediaType.PICTURE)
+    }
+
+    override suspend fun getVideos(prevIndex: Int, pageSize: Int): List<Media> {
+        return getMedia(prevIndex, pageSize, MediaType.VIDEO)
+    }
+
+    private fun getMedia(prevIndex: Int, pageSize: Int, type: MediaType) : List<Media> {
+        val media = ArrayList<Media>()
+        val uri: Uri = when (type) {
+            MediaType.PICTURE -> MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+            MediaType.VIDEO -> MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+        }
         val projection = arrayOf(
             "_id",
             MediaStore.MediaColumns.DATA
@@ -41,19 +53,18 @@ class DefaultGaStorage @Inject constructor(
             val file = File(data)
             if (file.exists()) {
                 val id = cursor.getString(cursor.getColumnIndexOrThrow("_id"))
-                pictures.add(Media(
+                media.add(Media(
                     id = id,
                     name = file.name,
                     path = file.absolutePath,
                     size = file.length(),
                     lastModified = file.lastModified(),
-                    type = MediaType.PICTURE
+                    type = type
                 ))
             }
         }
         cursor?.close()
 
-        return pictures
+        return media
     }
-
 }

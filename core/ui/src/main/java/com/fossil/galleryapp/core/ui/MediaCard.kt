@@ -1,16 +1,19 @@
 package com.fossil.galleryapp.core.ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
@@ -21,10 +24,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.ImageLoader
 import coil.compose.AsyncImage
+import coil.compose.rememberAsyncImagePainter
+import coil.compose.rememberImagePainter
+import coil.decode.VideoFrameDecoder
 import com.fossil.galleryapp.core.designsystem.icon.GaIcons
+import com.fossil.galleryapp.core.designsystem.theme.Transparent30
 import com.fossil.galleryapp.core.model.Media
 import com.fossil.galleryapp.core.model.MediaType
 import com.fossil.galleryapp.core.ui.utils.MediaUtils
@@ -78,7 +87,7 @@ fun MediaPreview(
 ) {
     when (type) {
         MediaType.PICTURE -> MediaPreviewPicture(path = path)
-        MediaType.VIDEO -> MediaPreviewVideo()
+        MediaType.VIDEO -> MediaPreviewVideo(path = path)
     }
 }
 
@@ -91,24 +100,47 @@ fun MediaPreviewPicture(
         contentDescription = null,
         modifier = Modifier
             .size(100.dp)
-            .clip(RoundedCornerShape(10.dp))
     )
 }
 
 @Composable
-fun MediaPreviewVideo() {
+fun MediaPreviewVideo(
+    path: String?
+) {
+    val context = LocalContext.current
+    val imageLoader = ImageLoader.Builder(context)
+        .components {
+            add(VideoFrameDecoder.Factory())
+        }.crossfade(true)
+        .build()
+
+    val painter = rememberAsyncImagePainter(
+        model = path,
+        imageLoader = imageLoader
+    )
+
     Box(
         modifier = Modifier
             .size(100.dp)
-            .background(Color.Black, RoundedCornerShape(10.dp))
     ) {
-        Icon(
-            imageVector = GaIcons.Play,
+        Image(
+            painter = painter,
             contentDescription = null,
-            modifier = Modifier.align(
-                Alignment.Center
-            )
+            modifier = Modifier
+                .fillMaxSize()
         )
+
+        Box(
+            modifier = Modifier
+                .align(Alignment.Center)
+                .background(Transparent30, CircleShape)
+        ) {
+            Icon(
+                imageVector = GaIcons.Play,
+                contentDescription = null,
+                modifier = Modifier.padding(8.dp)
+            )
+        }
     }
 }
 

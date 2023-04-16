@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.fossil.galleryapp.feature.pictures.navigation.picturesRoute
 import com.fossil.galleryapp.feature.pictures.navigation.picturesScreen
+import com.fossil.galleryapp.feature.videos.navigation.videosScreen
 
 /**
  * Created by TC on 16/04/2023.
@@ -20,5 +21,6 @@ fun GalleryAppNavHost(
         startDestination = startDestination
     ) {
         picturesScreen()
+        videosScreen()
     }
 }
