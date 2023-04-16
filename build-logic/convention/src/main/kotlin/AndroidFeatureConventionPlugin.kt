@@ -20,6 +20,7 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", project(":core:designsystem"))
                 add("implementation", project(":core:common"))
                 add("implementation", project(":core:domain"))
+                add("implementation", project(":core:ui"))
 
                 add("testImplementation", kotlin("test"))
                 add("testImplementation", project(":core:data"))

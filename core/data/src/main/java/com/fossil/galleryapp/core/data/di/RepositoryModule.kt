@@ -16,6 +16,6 @@ import dagger.hilt.components.SingletonComponent
 interface RepositoryModule {
     @Binds
     fun bindsMediaRepository(
-        mediaRepository: MediaRepository
-    ) : OfflineMediaRepository
+        offlineMediaRepository: OfflineMediaRepository
+    ) : MediaRepository
 }

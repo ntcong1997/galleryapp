@@ -6,3 +6,9 @@ plugins {
 android {
     namespace = "com.fossil.galleryapp.feature.pictures"
 }
+
+dependencies {
+    // Paging
+    implementation(libs.androidx.paging.paging.runtime)
+    implementation(libs.androidx.paging.paging.compose)
+}

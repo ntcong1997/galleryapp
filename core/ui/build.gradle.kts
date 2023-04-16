@@ -19,4 +19,7 @@ dependencies {
     // Coil
     implementation(libs.io.coil.kt)
     implementation(libs.io.coil.kt.compose)
+
+    // Paging
+    implementation(libs.androidx.paging.paging.compose)
 }
