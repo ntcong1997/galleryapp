@@ -8,8 +8,11 @@ android {
 }
 
 dependencies {
-//    implementation(project(":core:common"))
+    implementation(project(":core:model"))
 
     // Coroutines
     implementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.android)
+
+    // Paging
+    implementation(libs.androidx.paging.paging.runtime)
 }
