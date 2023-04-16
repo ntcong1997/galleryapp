@@ -29,6 +29,7 @@ com-google-accompanist-pager = "0.28.0"
 com-google-android-material = "1.7.0"
 com-google-dagger = "2.44.2"
 com-google-gms-google-services = "4.3.14"
+io-coil = "2.3.0"
 junit = "4.13.2"
 org-jetbrains-kotlin = "1.8.0"
 org-jetbrains-kotlinx = "1.6.4"
@@ -78,6 +79,8 @@ com-google-dagger-hilt-android = { module = "com.google.dagger:hilt-android", ve
 com-google-dagger-hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "com-google-dagger" }
 com-google-dagger-hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "com-google-dagger" }
 com-google-gms-google-services = { module = "com.google.gms:google-services", version.ref = "com-google-gms-google-services" }
+io-coil-kt = { group = "io.coil-kt", name = "coil", version.ref = "io-coil" }
+io-coil-kt-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "io-coil" }
 junit = { module = "junit:junit", version.ref = "junit" }
 org-jetbrains-kotlin-kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "org-jetbrains-kotlin" }
 org-jetbrains-kotlin-kotlin-stdlib-jdk7 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk7", version.ref = "org-jetbrains-kotlin" }
