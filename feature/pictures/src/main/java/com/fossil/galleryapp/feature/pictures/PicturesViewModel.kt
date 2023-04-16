@@ -1,6 +1,8 @@
 package com.fossil.galleryapp.feature.pictures
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
 import com.fossil.galleryapp.core.domain.GetPicturesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -11,7 +13,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PicturesViewModel @Inject constructor(
-    private val getPicturesUseCase: GetPicturesUseCase
+    getPicturesUseCase: GetPicturesUseCase
 ) : ViewModel() {
     val pictures = getPicturesUseCase()
+        .cachedIn(viewModelScope)
 }

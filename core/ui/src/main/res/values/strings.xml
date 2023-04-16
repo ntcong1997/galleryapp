@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="action_allow">Allow</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="content_permission_settings">App needs to access permission to display content</string>
+
+</resources>

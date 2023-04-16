@@ -1,6 +1,8 @@
 package com.fossil.galleryapp.feature.videos
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
 import com.fossil.galleryapp.core.domain.GetPicturesUseCase
 import com.fossil.galleryapp.core.domain.GetVideosUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class VideosViewModel @Inject constructor(
-    private val getVideosUseCase: GetVideosUseCase
+    getVideosUseCase: GetVideosUseCase
 ) : ViewModel() {
     val videos = getVideosUseCase()
+        .cachedIn(viewModelScope)
 }

@@ -3,4 +3,6 @@
 
     <string name="text_pictures">Pictures</string>
 
+    <string name="content_pictures_permission">App needs permission to display pictures</string>
+
 </resources>

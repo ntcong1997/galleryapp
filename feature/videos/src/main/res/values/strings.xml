@@ -3,4 +3,6 @@
 
     <string name="text_videos">Videos</string>
 
+    <string name="content_videos_permission">App needs permission to display videos</string>
+
 </resources>
